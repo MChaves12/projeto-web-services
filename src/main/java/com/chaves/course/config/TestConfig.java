@@ -10,10 +10,12 @@ import org.springframework.context.annotation.Profile;
 
 import com.chaves.course.entities.Category;
 import com.chaves.course.entities.Order;
+import com.chaves.course.entities.Product;
 import com.chaves.course.entities.User;
 import com.chaves.course.entities.enums.OrderStatus;
 import com.chaves.course.repositories.CategoryRepository;
 import com.chaves.course.repositories.OrderRepository;
+import com.chaves.course.repositories.ProductRepository;
 import com.chaves.course.repositories.UserRepository;
 
 @Configuration
@@ -22,6 +24,9 @@ public class TestConfig implements CommandLineRunner{
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private ProductRepository productRepository;
 	
 	@Autowired
 	private OrderRepository orderRepository;
@@ -42,9 +47,17 @@ public class TestConfig implements CommandLineRunner{
 		Category cat2 = new Category(null, "Books");
 		Category cat3 = new Category(null, "Computers");
 		
+		Product p1 = new Product(null, "Senhor dos Aneis", "Lorem ipsum", 90.5, "");
+		Product p2 = new Product(null, "Smart Tv", "Lorem ipsum", 2190.0, "");
+		Product p3 = new Product(null, "MacBook Pro", "Lorem ipsum", 1550.5, "");
+		Product p4 = new Product(null, "Pc Gamer", "Lorem ipsum", 1200.0, "");
+
+		
 		userRepository.saveAll(Arrays.asList(u1, u2));
 		orderRepository.saveAll(Arrays.asList(o1, o2, o3));
 		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3));
+		productRepository.saveAll(Arrays.asList(p1, p2, p3, p4));
+
 	}
 	
 	
